@@ -158,6 +158,7 @@ def main():
         action="store_true",
         help="Use continuous lecture numbering instead of per-chapter",
     )
+    parser.add_argument("--device", "-d", dest="device", type=str, help="Name of WVD file to use")
     # parser.add_argument("-v", "--version", action="version", version="You are running version {version}".format(version=__version__))
 
     args = parser.parse_args()
@@ -167,8 +168,6 @@ def main():
     del args.log_level
 
     udemy = Udemy(**vars(args))
-
-    udemy.init_logger()
 
     udemy.pre_check()
 
@@ -184,11 +183,7 @@ def main():
     udemy.download_dir.mkdir(parents=True, exist_ok=True)
 
     # Get the keys
-    if udemy.key_file_path.exists():
-        with udemy.key_file_path.open("r") as keyfile:
-            udemy.keys = json.loads(keyfile.read())
-    else:
-        udemy.logger.warning("> Keyfile not found! You won't be able to decrypt any encrypted videos!")
+    udemy.load_keys()
 
     udemy.update_auth()
 
