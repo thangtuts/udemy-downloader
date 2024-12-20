@@ -31,7 +31,7 @@ CURRICULUM_ITEMS_PARAMS = {
     "fields[chapter]": "title,object_index",
     "fields[asset]": "title,filename,asset_type,status,is_external,course_is_drmed,media_sources,captions,slides,slide_urls,download_urls,external_url,stream_urls,@min,status,delayed_asset_message,processing_errors,body",
     "caching_intent": True,
-    "page_size": "200",
+    "page_size": "100",
 }
 
 COURSE_URL_PARAMS = {"fields[course]": "title", "use_remote_version": True, "caching_intent": True}
