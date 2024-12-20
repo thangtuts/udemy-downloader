@@ -720,10 +720,10 @@ class Udemy:
         url = CURRICULUM_ITEMS_URL.format(portal_name=portal_name, course_id=course_id)
         page = 1
         try:
-            # data = self.session._get(url, CURRICULUM_ITEMS_PARAMS).json()
-            data = self.session._get(url, CURRICULUM_ITEMS_PARAMS)
-            data.raise_for_status()
-            data = data.json()
+            data = self.session._get(url, CURRICULUM_ITEMS_PARAMS).json()
+            # data = self.session._get(url, CURRICULUM_ITEMS_PARAMS)
+            # data.raise_for_status()
+            # data = data.json()
         except ConnectionError as error:
             self.logger.fatal(f"Connection error: {error}")
             time.sleep(0.8)
